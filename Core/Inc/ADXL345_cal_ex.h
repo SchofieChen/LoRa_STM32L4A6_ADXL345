@@ -34,7 +34,7 @@ typedef struct FFTInstance
 	uint16_t data1;
 	int16_t acceleration;
 	float32_t accelerationfloat;
-
+	float32_t bufferforfilter[dataLength/2];
 }fftInstance;
 
 //typedef enum {true,false} dataReadyFlag;
@@ -45,6 +45,6 @@ void AcquireData(uint8_t *data);
 //void AcquireData();
 void FeatureExtraction();
 void ADXL345_Measure();
-
+void movingAverage_filter(float * input_data, float * filterdata, int length, int filterOrder);
 
 

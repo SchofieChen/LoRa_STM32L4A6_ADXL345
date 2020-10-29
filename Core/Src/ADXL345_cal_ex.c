@@ -136,17 +136,36 @@ void AcquireData(uint8_t *data)
 void FeatureExtraction()
 {
 	//Calculate Z axis statistic
+	movingAverage_filter(ZfftInstance.bufferforTimeSV, ZfftInstance.bufferforfilter, 2048,5);
 	Calculate_FFT_RMS(ZfftInstance.bufferforFFT, testOutput, fftSize, &Zstatistic_value);
-	Calculate_All_statisitc(ZstatisticDataSet, dataLength/2, &Zstatistic_value);
+	Calculate_All_statisitc(ZfftInstance.bufferforfilter, dataLength/2, &Zstatistic_value);
 
 	//Calculate X axis statistic
+	movingAverage_filter(XfftInstance.bufferforTimeSV, XfftInstance.bufferforfilter, 2048,5);
 	Calculate_FFT_RMS(XfftInstance.bufferforFFT, testOutput, fftSize, &Xstatistic_value);
-	Calculate_All_statisitc(XstatisticDataSet, dataLength/2, &Xstatistic_value);
+	Calculate_All_statisitc(XfftInstance.bufferforfilter, dataLength/2, &Xstatistic_value);
 
 	//Calculate Y axis statistic
+	movingAverage_filter(YfftInstance.bufferforTimeSV, YfftInstance.bufferforfilter, 2048,5);
 	Calculate_FFT_RMS(YfftInstance.bufferforFFT , testOutput, fftSize, &Ystatistic_value);
-	Calculate_All_statisitc(YstatisticDataSet, dataLength/2, &Ystatistic_value);
+	Calculate_All_statisitc(YfftInstance.bufferforfilter, dataLength/2, &Ystatistic_value);
 
 
 }
 
+void movingAverage_filter(float * input_data, float * filterdata, int length, int filterOrder)
+{
+
+	for(uint16_t i=0; i<length; i++)
+	{
+		if(i > filterOrder )
+		{
+			filterdata[i] = (input_data[i] + input_data[i-1] + input_data[i-2]+ input_data[i-3]+ input_data[i-4]) / filterOrder;
+		}
+		else
+		{
+			filterdata[i] = (input_data[i] + input_data[i+1] + input_data[i+2]+ input_data[i+3]+  input_data[i+4]) / filterOrder  ;
+		}
+	}
+
+}

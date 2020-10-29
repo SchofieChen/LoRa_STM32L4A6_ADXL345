@@ -60,6 +60,8 @@ int16_t sampleCount = 0;
 uint8_t data[6]={0,0,0,0,0,0};
 int16_t sampleIndex = 0;
 
+//TODO:for signal buffer
+
 fftInstance XfftInstance;
 fftInstance YfftInstance;
 fftInstance ZfftInstance;
@@ -100,7 +102,7 @@ int main(void)
   /* MCU Configuration--------------------------------------------------------*/
 
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-  HAL_Init();
+   HAL_Init();
 
   /* USER CODE BEGIN Init */
 
@@ -155,13 +157,13 @@ int main(void)
     sampleIndex = 0;
 
     //TODO:ADXL345 Standby Entry
-    ADXL_Standby(ON);
+    //ADXL_Standby(ON);
 
     //TODO:Lora send data
     LoRa_USART(&huart3);
     //delay_s(5);
     //TODO:MCU Standby Entry
-    EnterStandbyPWR_Mode(&hrtc);
+    //EnterStandbyPWR_Mode(&hrtc);
        
   }
   /* USER CODE END 3 */

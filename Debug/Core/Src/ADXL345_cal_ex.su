@@ -1,3 +1,4 @@
 ADXL345_cal_ex.c:62:6:ADXL345_Init	24	static,ignoring_inline_asm
 ADXL345_cal_ex.c:93:6:AcquireData	24	static
 ADXL345_cal_ex.c:136:6:FeatureExtraction	8	static
+ADXL345_cal_ex.c:156:6:movingAverage_filter	32	static

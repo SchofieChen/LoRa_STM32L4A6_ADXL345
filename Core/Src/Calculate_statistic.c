@@ -163,7 +163,7 @@ void Calculate_All_statisitc(float32_t *statisticDataSet, uint16_t dataLength, S
 	arm_max_f32(statisticDataSet, dataLength, &staticInstance->Statistic_max, &maxtestIndex);
 	arm_min_f32(statisticDataSet, dataLength, &staticInstance->Statistic_min, &mintestIndex);
 	arm_rms_f32(statisticDataSet, dataLength, &staticInstance->Statistic_rms);
-	staticInstance->Statistic_p2p = 0.80 * (staticInstance->Statistic_max - staticInstance->Statistic_min);
+	staticInstance->Statistic_p2p = 1 * (staticInstance->Statistic_max - staticInstance->Statistic_min);
 
 }
 

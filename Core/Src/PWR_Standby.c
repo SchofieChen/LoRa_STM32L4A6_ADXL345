@@ -25,7 +25,7 @@ void EnterStandbyPWR_Mode(RTC_HandleTypeDef *hrtc)
 
 	//-------RTC Wake up setting---------------------
 	//Set StnadbyTime
-	PWRST.StandbyTime_Sec = 10 ;
+	PWRST.StandbyTime_Sec = 3 ;
 	//set RTC WakeUpTimer
 	if (HAL_RTCEx_SetWakeUpTimer_IT(hrtc, PWRST.StandbyTime_Sec, RTC_WAKEUPCLOCK_CK_SPRE_16BITS) != HAL_OK)
 	{
