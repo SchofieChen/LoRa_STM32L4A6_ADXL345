@@ -17,6 +17,7 @@ typedef struct
 {
 	_Bool WLUP_BTstatus;
 	uint16_t StandbyTime_Sec;
+	_Bool PowerMode;
 } PWRST_t;
 
 /* Private defines -----------------------------------------------------------*/
@@ -24,6 +25,8 @@ typedef struct
 #define LED_Pin GPIO_PIN_7
 #define WKUP_GPIO_Port GPIOC
 #define WKUP_Pin GPIO_PIN_13
+#define RunMode 0
+#define StandbyMode 1
 /* Exported functions prototypes ---------------------------------------------*/
 void EnterStandbyPWR_Mode(RTC_HandleTypeDef *hrtc);
 void RUN_PWR_Mode_Init(RTC_HandleTypeDef *hrtc);

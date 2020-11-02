@@ -66,7 +66,8 @@ void ADXL345_Init()
 	  adxl_config.Range = RANGE_16G;
 	  adxl_config.Resolution = RESOLUTION_FULL;
 	  adxl_config.AutoSleep = AUTOSLEEPOFF;
-	  adxl_config.LPMode = LPMODE_LOWPOWER;
+	  adxl_config.LPMode = LPMODE_NORMAL;
+	  //adxl_config.LPMode = LPMODE_LOWPOWER;
 	  adxl_config.Rate = BWRATE_3200;
 	  adxl_config.SPIMode = SPIMODE_4WIRE;
 	  adxl_config.IntMode = INT_ACTIVEHIGH;

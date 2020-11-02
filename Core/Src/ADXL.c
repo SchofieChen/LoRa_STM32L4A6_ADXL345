@@ -126,7 +126,7 @@ void adxlBW(ADXL_InitTypeDef * adxl)
 						{
 						// Low power mode
 						bwreg |= (1 << 4);
-						if ( ((adxl->Rate) <7) && ((adxl->Rate)>12) ) bwreg += 7;
+						if ( ((adxl->Rate) <7) || ((adxl->Rate)>12) ) bwreg += 7;
 								else bwreg +=(adxl->Rate);
 						writeRegister(BW_RATE,bwreg);	
 						} 
@@ -134,7 +134,7 @@ void adxlBW(ADXL_InitTypeDef * adxl)
 				{
 				// Normal Mode
 	
-				if ( ((adxl->Rate) <6) && ((adxl->Rate)>15) ) bwreg += 6;
+				if ( ((adxl->Rate) <6) || ((adxl->Rate)>15) ) bwreg += 6;
 						else bwreg +=(adxl->Rate);
 				writeRegister(BW_RATE,bwreg);	
 				}
