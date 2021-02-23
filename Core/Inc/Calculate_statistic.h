@@ -4,6 +4,7 @@
 #include <math.h>
 #include "stdlib.h"
 
+
 typedef struct Statistic_value
 {
 	float32_t Statistic_max;
@@ -17,6 +18,7 @@ typedef struct Statistic_value
 	float32_t Statistic_skewness;
 	float32_t Statistic_FreqOvall;
 	float32_t Statistic_SpeedOvall;
+	float32_t Statistic_DisplacementOvall;
 	float32_t Statistic_FreqPeak[20];
 	float32_t Statistic_p2p;
 
@@ -34,6 +36,7 @@ typedef struct Statistic_value
 	float32_t Statistic_FreqOvall_Temp;
 
 }Sv;
+
 Sv statistic_value;
 Sv Xstatistic_value;
 Sv Ystatistic_value;

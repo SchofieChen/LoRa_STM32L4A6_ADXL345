@@ -142,14 +142,19 @@ float Calculate_kurtosis(float *x, int n)
 float Calculate_FreqOverAll(float *x, int n)
 {
 	float ParsevalFftPower = 0;
+
+	float32_t samplingRate = 3200;
+	float32_t frequencyScale = samplingRate/(float)n;
+	int target_fre_calculation_end = 1000 / frequencyScale;
+	int target_fre_calculation_start = 10 / (float)frequencyScale;
 	float ans = 0;
-	for(int i = 0; i<n; i++)
+	for(int i = target_fre_calculation_start; i<target_fre_calculation_end; i++)
 	{
 		//FFTRMSArray[i] = (testOutput[i]*2)/4096;
 		ParsevalFftPower += x[i] * x[i];
 	}
 
-	ans = sqrt(ParsevalFftPower)/n;
+	ans = sqrt(2 * ParsevalFftPower)/n;
 
 
 	return ans;
@@ -171,6 +176,7 @@ void Calculate_FFT_RMS(float32_t * bufferforFFT, float32_t * OutputFFTbuffer, in
 {
 	float32_t maxValue = 0;
 	float32_t Speeddatabuffer[2048];
+	float32_t displacementbuffer[2048];
 	uint32_t testIndex = 0;
 	uint32_t ifftFlag = 0;
 	uint32_t doBitReverse = 1;
@@ -194,6 +200,13 @@ void Calculate_FFT_RMS(float32_t * bufferforFFT, float32_t * OutputFFTbuffer, in
 	OutputFFTbuffer[0] = 0;
 	OutputFFTbuffer[1] = 0;
 	OutputFFTbuffer[2] = 0;
+	OutputFFTbuffer[3] = 0;
+	OutputFFTbuffer[4] = 0;
+	OutputFFTbuffer[5] = 0;
+	OutputFFTbuffer[6] = 0;
+	OutputFFTbuffer[7] = 0;
+	OutputFFTbuffer[8] = 0;
+	OutputFFTbuffer[9] = 0;
 
 	staticInstance->Statistic_FreqOvall = Calculate_FreqOverAll(OutputFFTbuffer,2048);
 
@@ -206,7 +219,9 @@ void Calculate_FFT_RMS(float32_t * bufferforFFT, float32_t * OutputFFTbuffer, in
 	float32_t samplingRate = 3200;
 	float32_t frequencyScale = samplingRate/sampleCount;
 
-	for(uint16_t i = 1; i < fftSize; i++)
+	//2021/0202/George
+	//TODO : calculate velocity (speed) overall(RMS)
+	for(uint16_t i = 1; i < fftSize / 2; i++)
 	{
 		if(i < fftSize/2)
 		{
@@ -220,10 +235,6 @@ void Calculate_FFT_RMS(float32_t * bufferforFFT, float32_t * OutputFFTbuffer, in
 			}
 
 		}
-		else if(i > fftSize/2)
-		{
-			Speeddatabuffer[i] = (Speeddatabuffer[i] * 9807) / (2 * 3.1415926 * frequencyScale * abs(fftSize-i));
-		}
 
 	}
 
@@ -234,18 +245,32 @@ void Calculate_FFT_RMS(float32_t * bufferforFFT, float32_t * OutputFFTbuffer, in
 	Speeddatabuffer[4] = 0;
 	Speeddatabuffer[5] = 0;
 	Speeddatabuffer[6] = 0;
+	Speeddatabuffer[7] = 0;
+	Speeddatabuffer[8] = 0;
+	Speeddatabuffer[9] = 0;
+	Speeddatabuffer[10] = 0;
 
-	Speeddatabuffer[2041] = 0;
-	Speeddatabuffer[2042] = 0;
-	Speeddatabuffer[2043] = 0;
-	Speeddatabuffer[2044] = 0;
-	Speeddatabuffer[2045] = 0;
-	Speeddatabuffer[2046] = 0;
-	Speeddatabuffer[2047] = 0;
+	//2021/0202/George
+	//TODO : calculate displacement overall(RMS)
+	for(uint16_t i = 1; i < fftSize / 2; i++)
+	{
+		if(i < fftSize/2)
+		{
+			if(i ==0)
+			{
+				displacementbuffer[i] = Speeddatabuffer[i];
+			}
+			else
+			{
+				displacementbuffer[i] = (Speeddatabuffer[i] * 9807) / (2 * 3.1415926 * frequencyScale * i);
+			}
+
+		}
+
+	}
 
 
-	staticInstance->Statistic_SpeedOvall = Calculate_FreqOverAll(Speeddatabuffer,2048);
-
+	staticInstance->Statistic_SpeedOvall = Calculate_FreqOverAll(Speeddatabuffer,sampleCount);
+	staticInstance->Statistic_DisplacementOvall =  Calculate_FreqOverAll(displacementbuffer,sampleCount);
 }
-
 

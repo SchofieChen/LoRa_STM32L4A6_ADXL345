@@ -7,7 +7,7 @@ ADXL.c:243:6:ADXL_getAccel	40	static
 ADXL.c:273:6:ADXL_Measure	24	static
 ADXL.c:297:6:ADXL_Sleep	24	static
 ADXL.c:321:6:ADXL_Standby	24	static
-ADXL.c:346:6:ADXL_test	16	static
+ADXL.c:346:6:ADXL_test	16	static,ignoring_inline_asm
 ADXL.c:357:6:ADXL_enableSelfTest	16	static
 ADXL.c:369:6:ADXL_disableSelfTest	16	static
 ADXL.c:384:6:ADXL_SetOffset	16	static

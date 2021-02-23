@@ -348,7 +348,7 @@ void ADXL_test(uint8_t * regs)
 			readRegister(BW_RATE,&regs[0],1);
 			readRegister(DATA_FORMAT,&regs[1],1);
 			readRegister(POWER_CTL,&regs[2],1);
-			
+			__NOP();
 		}
 		
 		 /**

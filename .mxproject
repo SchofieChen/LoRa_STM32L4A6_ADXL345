@@ -9,17 +9,17 @@ CDefines=USE_HAL_DRIVER;STM32L4A6xx;USE_HAL_DRIVER;USE_HAL_DRIVER;
 [PreviousGenFiles]
 AdvancedFolderStructure=true
 HeaderFileListSize=3
-HeaderFiles#0=C:/Users/USER/STM32CubeIDE/workspace_1.1.0/STM32L4A6TEST/Core/Inc/stm32l4xx_it.h
-HeaderFiles#1=C:/Users/USER/STM32CubeIDE/workspace_1.1.0/STM32L4A6TEST/Core/Inc/stm32l4xx_hal_conf.h
-HeaderFiles#2=C:/Users/USER/STM32CubeIDE/workspace_1.1.0/STM32L4A6TEST/Core/Inc/main.h
+HeaderFiles#0=E:/LoRa_STM32L4A6_ADXL345/LoRa_STM32L4A6_ADXL345/Core/Inc/stm32l4xx_it.h
+HeaderFiles#1=E:/LoRa_STM32L4A6_ADXL345/LoRa_STM32L4A6_ADXL345/Core/Inc/stm32l4xx_hal_conf.h
+HeaderFiles#2=E:/LoRa_STM32L4A6_ADXL345/LoRa_STM32L4A6_ADXL345/Core/Inc/main.h
 HeaderFolderListSize=1
-HeaderPath#0=C:/Users/USER/STM32CubeIDE/workspace_1.1.0/STM32L4A6TEST/Core/Inc
+HeaderPath#0=E:/LoRa_STM32L4A6_ADXL345/LoRa_STM32L4A6_ADXL345/Core/Inc
 HeaderFiles=;
 SourceFileListSize=3
-SourceFiles#0=C:/Users/USER/STM32CubeIDE/workspace_1.1.0/STM32L4A6TEST/Core/Src/stm32l4xx_it.c
-SourceFiles#1=C:/Users/USER/STM32CubeIDE/workspace_1.1.0/STM32L4A6TEST/Core/Src/stm32l4xx_hal_msp.c
-SourceFiles#2=C:/Users/USER/STM32CubeIDE/workspace_1.1.0/STM32L4A6TEST/Core/Src/main.c
+SourceFiles#0=E:/LoRa_STM32L4A6_ADXL345/LoRa_STM32L4A6_ADXL345/Core/Src/stm32l4xx_it.c
+SourceFiles#1=E:/LoRa_STM32L4A6_ADXL345/LoRa_STM32L4A6_ADXL345/Core/Src/stm32l4xx_hal_msp.c
+SourceFiles#2=E:/LoRa_STM32L4A6_ADXL345/LoRa_STM32L4A6_ADXL345/Core/Src/main.c
 SourceFolderListSize=1
-SourcePath#0=C:/Users/USER/STM32CubeIDE/workspace_1.1.0/STM32L4A6TEST/Core/Src
+SourcePath#0=E:/LoRa_STM32L4A6_ADXL345/LoRa_STM32L4A6_ADXL345/Core/Src
 SourceFiles=;
 

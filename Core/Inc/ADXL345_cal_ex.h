@@ -22,6 +22,7 @@
 
 
 /* Private define ------------------------------------------------------------*/
+
 #define dataLength 4096
 #define FFT_Frequency_Scale 3200/(dataLength/2)
 

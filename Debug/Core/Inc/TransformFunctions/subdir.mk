@@ -73,6 +73,9 @@ OBJS += \
 ./Core/Inc/TransformFunctions/arm_rfft_q15.o \
 ./Core/Inc/TransformFunctions/arm_rfft_q31.o 
 
+S_UPPER_DEPS += \
+./Core/Inc/TransformFunctions/arm_bitreversal2.d 
+
 C_DEPS += \
 ./Core/Inc/TransformFunctions/arm_bitreversal.d \
 ./Core/Inc/TransformFunctions/arm_cfft_f32.d \
@@ -110,8 +113,8 @@ C_DEPS += \
 # Each subdirectory must supply rules for building sources it contributes
 Core/Inc/TransformFunctions/arm_bitreversal.o: ../Core/Inc/TransformFunctions/arm_bitreversal.c
 	arm-none-eabi-gcc "$<" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -D__FPU_PRESENT -DARM_MATH_CM4 -DSTM32L4A6xx -DDEBUG -c -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Inc/TransformFunctions/arm_bitreversal.d" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
-Core/Inc/TransformFunctions/%.o: ../Core/Inc/TransformFunctions/%.S
-	arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -c -x assembler-with-cpp --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@" "$<"
+Core/Inc/TransformFunctions/arm_bitreversal2.o: ../Core/Inc/TransformFunctions/arm_bitreversal2.S
+	arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -c -x assembler-with-cpp -MMD -MP -MF"Core/Inc/TransformFunctions/arm_bitreversal2.d" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@" "$<"
 Core/Inc/TransformFunctions/arm_cfft_f32.o: ../Core/Inc/TransformFunctions/arm_cfft_f32.c
 	arm-none-eabi-gcc "$<" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -D__FPU_PRESENT -DARM_MATH_CM4 -DSTM32L4A6xx -DDEBUG -c -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Inc/TransformFunctions/arm_cfft_f32.d" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
 Core/Inc/TransformFunctions/arm_cfft_q15.o: ../Core/Inc/TransformFunctions/arm_cfft_q15.c

@@ -36,7 +36,8 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Core/Inc/PWR_Standby.h ../Core/Inc/LoRa_APP_slave.h \
  ../Core/Inc/ADXL345_cal_ex.h ../Core/Inc/ADXL.h ../Core/Inc/Delay.h \
  ../Core/Inc/arm_const_structs.h ../Core/Inc/arm_math.h \
- ../Core/Inc/arm_common_tables.h ../Core/Inc/Calculate_statistic.h
+ ../Core/Inc/arm_common_tables.h ../Core/Inc/Calculate_statistic.h \
+ ../Core/Inc/printf.h ../Core/Inc/BLE_USART.h
 
 ../Core/Inc/main.h:
 
@@ -125,3 +126,7 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Core/Inc/arm_common_tables.h:
 
 ../Core/Inc/Calculate_statistic.h:
+
+../Core/Inc/printf.h:
+
+../Core/Inc/BLE_USART.h:
